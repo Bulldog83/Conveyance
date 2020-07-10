@@ -31,7 +31,7 @@ public class InserterBlockEntity extends BlockEntity implements SingularStackInv
         super(ConveyanceBlockEntities.INSERTER);
     }
 
-    public InserterBlockEntity(BlockEntityType type) {
+    public InserterBlockEntity(BlockEntityType<?> type) {
         super(type);
     }
 
@@ -161,18 +161,14 @@ public class InserterBlockEntity extends BlockEntity implements SingularStackInv
 	private static ItemStack transfer(Inventory from, Inventory to, ItemStack stack, int slot, Direction direction) {
 		ItemStack itemStack = to.getStack(slot);
 		if (canInsert(to, stack, slot, direction)) {
-			boolean bl = false;
-			boolean bl2 = to.isEmpty();
 			if (itemStack.isEmpty()) {
 				to.setStack(slot, stack);
 				stack = ItemStack.EMPTY;
-				bl = true;
 			} else if (canMergeItems(itemStack, stack)) {
 				int i = stack.getMaxCount() - itemStack.getCount();
 				int j = Math.min(stack.getCount(), i);
 				stack.decrement(j);
 				itemStack.increment(j);
-				bl = j > 0;
 			}
 		}
 

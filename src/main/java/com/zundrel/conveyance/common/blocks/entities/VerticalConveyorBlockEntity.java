@@ -23,7 +23,7 @@ public class VerticalConveyorBlockEntity extends ConveyorBlockEntity {
         super(ConveyanceBlockEntities.VERTICAL_CONVEYOR);
     }
 
-    public VerticalConveyorBlockEntity(BlockEntityType type) {
+    public VerticalConveyorBlockEntity(BlockEntityType<?> type) {
         super(type);
     }
 

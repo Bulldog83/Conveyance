@@ -148,9 +148,7 @@ public class ConveyorBlock extends HorizontalFacingBlock implements BlockEntityP
         Direction direction = blockState.get(FACING);
         ConveyorBlockEntity conveyorBlockEntity = (ConveyorBlockEntity) world.getBlockEntity(blockPos);
 
-        BlockPos frontPos = blockPos.offset(direction);
-
-		BlockEntity frontBlockEntity = world.getBlockEntity(blockPos.offset(direction));
+        BlockEntity frontBlockEntity = world.getBlockEntity(blockPos.offset(direction));
         if (frontBlockEntity instanceof Conveyable && ((Conveyable) frontBlockEntity).validInputSide(direction.getOpposite()))
             conveyorBlockEntity.setFront(true);
         else

@@ -11,7 +11,7 @@ public class AlternatorBlockEntity extends DoubleMachineBlockEntity {
         super(ConveyanceBlockEntities.ALTERNATOR);
     }
 
-    public AlternatorBlockEntity(BlockEntityType type) {
+    public AlternatorBlockEntity(BlockEntityType<?> type) {
         super(type);
     }
 

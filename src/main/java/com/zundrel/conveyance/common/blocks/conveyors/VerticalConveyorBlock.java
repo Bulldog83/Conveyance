@@ -72,13 +72,7 @@ public class VerticalConveyorBlock extends HorizontalFacingBlock implements Bloc
     }
 
     @Override
-    public void onBlockAdded(BlockState blockState, World world, BlockPos blockPos, BlockState blockState2, boolean boolean_1) {
-        Direction direction = blockState.get(FACING);
-    }
-
-    @Override
     public void onStateReplaced(BlockState blockState, World world, BlockPos blockPos, BlockState blockState2, boolean boolean_1) {
-        Direction facing = blockState.get(FACING);
         if (blockState.getBlock() != blockState2.getBlock()) {
             BlockEntity blockEntity_1 = world.getBlockEntity(blockPos);
             if (blockEntity_1 instanceof VerticalConveyorBlockEntity) {

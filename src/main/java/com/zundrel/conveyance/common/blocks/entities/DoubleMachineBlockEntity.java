@@ -28,7 +28,7 @@ public class DoubleMachineBlockEntity extends BlockEntity implements Conveyable,
 	boolean left = false;
 	boolean right = false;
 
-    public DoubleMachineBlockEntity(BlockEntityType type) {
+    public DoubleMachineBlockEntity(BlockEntityType<?> type) {
         super(type);
     }
 

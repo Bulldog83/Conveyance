@@ -4,7 +4,7 @@ import com.zundrel.conveyance.common.blocks.conveyors.ConveyorProperties;
 import com.zundrel.conveyance.mixin.EntityShapeContextAccess;
 import com.zundrel.wrenchable.WrenchableUtilities;
 import com.zundrel.wrenchable.block.BlockWrenchable;
-import grondag.fermion.modkeys.api.ModKeys;
+import grondag.fermion.modkeys.impl.ModKeysAccess;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.EntityShapeContext;
@@ -39,7 +39,7 @@ public class CatwalkBlock extends Block implements BlockWrenchable {
     @Override
     public void onWrenched(World world, PlayerEntity playerEntity, BlockHitResult blockHitResult) {
         BlockPos pos = blockHitResult.getBlockPos();
-        if (ModKeys.isControlPressed(playerEntity)) {
+        if (ModKeysAccess.isControlPressed(playerEntity)) {
             world.setBlockState(pos, world.getBlockState(pos).cycle(ConveyorProperties.FLOOR));
             return;
         }

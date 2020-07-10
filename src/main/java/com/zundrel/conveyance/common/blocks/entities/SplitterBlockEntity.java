@@ -9,7 +9,7 @@ public class SplitterBlockEntity extends DoubleMachineBlockEntity {
         super(ConveyanceBlockEntities.SPLITTER);
     }
 
-    public SplitterBlockEntity(BlockEntityType type) {
+    public SplitterBlockEntity(BlockEntityType<?> type) {
         super(type);
     }
 

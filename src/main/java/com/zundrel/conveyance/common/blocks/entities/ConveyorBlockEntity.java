@@ -33,7 +33,7 @@ public class ConveyorBlockEntity extends BlockEntity implements ConveyorConveyab
         super(ConveyanceBlockEntities.CONVEYOR);
     }
 
-    public ConveyorBlockEntity(BlockEntityType type) {
+    public ConveyorBlockEntity(BlockEntityType<?> type) {
         super(type);
     }
 
@@ -94,7 +94,6 @@ public class ConveyorBlockEntity extends BlockEntity implements ConveyorConveyab
 		if (conveyable.accepts(getStack())) {
 			if (position < speed) {
 				if (conveyable instanceof ConveyorConveyable && acrossConveyable instanceof ConveyorConveyable) {
-					ConveyorConveyable conveyor = (ConveyorConveyable) conveyable;
 					ConveyorConveyable acrossConveyor = (ConveyorConveyable) acrossConveyable;
 
 					if (position < speed && acrossConveyor.getPosition() == 0) {
