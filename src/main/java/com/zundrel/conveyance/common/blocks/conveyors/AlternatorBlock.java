@@ -43,7 +43,7 @@ public class AlternatorBlock extends HorizontalFacingBlock implements BlockEntit
 	}
 
 	@Override
-	public void onBlockRemoved(BlockState state, World world, BlockPos pos, BlockState newState, boolean notify) {
+	public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean notify) {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
 			if (blockEntity instanceof DoubleMachineBlockEntity) {
@@ -52,7 +52,7 @@ public class AlternatorBlock extends HorizontalFacingBlock implements BlockEntit
 				((DoubleMachineBlockEntity) blockEntity).setRemoved(true);
 			}
 
-			super.onBlockRemoved(state, world, pos, newState, notify);
+			super.onStateReplaced(state, world, pos, newState, notify);
 		}
 
 		updateDiagonals(world, this, pos);

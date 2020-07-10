@@ -14,7 +14,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.WorldAccess;
 
 public class CatwalkStairsBlock extends HorizontalFacingBlock {
     public CatwalkStairsBlock(Settings settings) {
@@ -33,7 +33,7 @@ public class CatwalkStairsBlock extends HorizontalFacingBlock {
         return this.getDefaultState().with(FACING, itemPlacementContext.getPlayer().isSneaking() ? itemPlacementContext.getPlayerFacing().getOpposite() : itemPlacementContext.getPlayerFacing());
     }
 
-    public boolean isAdjacentBlockOfMyType(IWorld world, BlockPos position, Direction facing) {
+    public boolean isAdjacentBlockOfMyType(WorldAccess world, BlockPos position, Direction facing) {
 
 		assert null != world : "world cannot be null";
 		assert null != position : "position cannot be null";
@@ -47,7 +47,7 @@ public class CatwalkStairsBlock extends HorizontalFacingBlock {
 	}
 
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction facing, BlockState neighborState, IWorld world, BlockPos pos, BlockPos neighborPos) {
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction facing, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 	    BlockState newState = state;
 
         newState = state.with(ConveyorProperties.RIGHT, this.isAdjacentBlockOfMyType(world, pos, state.get(FACING).rotateYClockwise())).with(ConveyorProperties.LEFT, this.isAdjacentBlockOfMyType(world, pos, state.get(FACING).rotateYCounterclockwise()));

@@ -24,7 +24,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.World;
 
 public class ConveyorBlock extends HorizontalFacingBlock implements BlockEntityProvider, Conveyor {
@@ -92,7 +92,7 @@ public class ConveyorBlock extends HorizontalFacingBlock implements BlockEntityP
     }
 
 	@Override
-	public void onBlockRemoved(BlockState blockState, World world, BlockPos blockPos, BlockState blockState2, boolean boolean_1) {
+	public void onStateReplaced(BlockState blockState, World world, BlockPos blockPos, BlockState blockState2, boolean boolean_1) {
 		if (blockState.getBlock() != blockState2.getBlock()) {
 			BlockEntity blockEntity_1 = world.getBlockEntity(blockPos);
 			if (blockEntity_1 instanceof ConveyorBlockEntity) {
@@ -101,14 +101,14 @@ public class ConveyorBlock extends HorizontalFacingBlock implements BlockEntityP
 				world.updateComparators(blockPos, this);
 			}
 
-			super.onBlockRemoved(blockState, world, blockPos, blockState2, boolean_1);
+			super.onStateReplaced(blockState, world, blockPos, blockState2, boolean_1);
 		}
 
 		updateDiagonals(world, this, blockPos);
 	}
 
 	@Override
-    public BlockState getStateForNeighborUpdate(BlockState blockState, Direction fromDirection, BlockState fromState, IWorld world, BlockPos blockPos, BlockPos fromPos) {
+    public BlockState getStateForNeighborUpdate(BlockState blockState, Direction fromDirection, BlockState fromState, WorldAccess world, BlockPos blockPos, BlockPos fromPos) {
         BlockState newState = blockState;
         Direction direction = newState.get(FACING);
 
